@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class File {
+public class FileOps {
     String line, text = "";
 
-    String read(String fileName) throws IOException {
+    public String read(String fileName) throws IOException {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
-            while ((line = br.readLine()) != null) text += line;
+            while ((line = br.readLine()) != null) text += "\\r\\n" + line;
             return text;
     }
 }

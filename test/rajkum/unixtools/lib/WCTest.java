@@ -21,4 +21,5 @@ public class WCTest {
         assertEquals(2, count.numOfLines);
         assertEquals(15, count.numOfChars);
     }
+
 }
