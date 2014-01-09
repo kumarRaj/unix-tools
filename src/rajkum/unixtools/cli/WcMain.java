@@ -9,7 +9,7 @@ public class WcMain {
         FileOps file = new FileOps();
         String text = null;
         try {
-             text = file.read(args[0]);
+            text = file.read(args[0]);
         } catch (IOException e) {
             System.err.println("Something went wrong");
         }

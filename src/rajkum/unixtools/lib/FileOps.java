@@ -8,8 +8,8 @@ public class FileOps {
     String line, text = "";
 
     public String read(String fileName) throws IOException {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
-            while ((line = br.readLine()) != null) text += "\\r\\n" + line;
-            return text;
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        while ((line = br.readLine()) != null) text += line + "\n";
+        return text;
     }
 }

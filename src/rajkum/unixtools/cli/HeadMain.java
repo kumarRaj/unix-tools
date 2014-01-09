@@ -9,15 +9,15 @@ public class HeadMain {
     public static void main(String[] args) {
         FileOps file = new FileOps();
         String text = null;
+        Head ob = new Head();
         try {
             text = file.read(args[0]);
-            Head ob = new Head();
-            ob.getLines(text);
+            System.out.println(ob.getLines(text, Integer.parseInt(args[1])));
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println(ob.getLines(text));
         } catch (Exception e) {
             System.err.println("Sorry,Something went wrong. Please try again");
         }
-        for (String line : ob.lines)
-            System.out.println(line);
     }
 
 }

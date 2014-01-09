@@ -7,26 +7,31 @@ public class HeadTest extends TestCase {
     @Test
     public void testGetLines() throws Exception {
         Head ob = new Head();
+        String input = "Kunal is\ngreat\nxtsf";
+        String expected = "Kunal is\ngreat\n";
 
-        ob.getLines("Kunal is\n great");
+        String result = ob.getLines(input,2);
 
-        assertEquals(2, ob.lines.length);
+        assertEquals(expected, result);
     }
 
     @Test
-    public void testGetLinesFor2Lines() throws Exception {
+    public void testGetLinesFor5Lines() throws Exception {
         Head ob = new Head();
+        String expected = "Kunal\nis\ngreat\nrea\ndsc\n";
 
-        ob.getLines("Kunal\n is\n great\nrea",2);
+        String actual = ob.getLines("Kunal\nis\ngreat\nrea\ndsc\niuedsdcjis",5);
 
-        assertEquals(2, ob.lines.length);
+        assertEquals(expected, actual);
     }
+    @Test
     public void testGetFirst10Lines() throws Exception {
-        String data = "Kunal\n is\n great\nrea\ndsq\nswq\nswqswq\nswq\nswq\ndqwqwd\ndqwdw";
+        String data = "Kunal\nis\ngreat\nrea\ndsq\nswq\nswqswq\nswq\nswq\ndqwqwd\ndqwdw\nkjwkdq\nooo";
+        String expected = "Kunal\nis\ngreat\nrea\ndsq\nswq\nswqswq\nswq\nswq\ndqwqwd\n";
         Head ob = new Head();
 
-        ob.getLines(data);
+        String actual = ob.getLines(data);
 
-        assertEquals(10, ob.lines.length);
+        assertEquals(expected, actual);
     }
 }
