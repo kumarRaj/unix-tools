@@ -2,7 +2,6 @@ package rajkum.unixtools.cli;
 
 import rajkum.unixtools.lib.FileOps;
 import rajkum.unixtools.lib.Uniq;
-import rajkum.unixtools.lib.WC;
 
 import java.io.IOException;
 
