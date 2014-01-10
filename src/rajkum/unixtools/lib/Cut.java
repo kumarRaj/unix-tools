@@ -13,7 +13,7 @@ public class Cut {
             return data;
         for (int i = 0; i < lines.length; i++) {
             String[] words = lines[i].split(delimiter);
-            if (field_no <= words.length) {
+            if (field_no < words.length) {
                 result.append(words[field_no]).append("\n");
             } else result.append("").append("\n");
         }
