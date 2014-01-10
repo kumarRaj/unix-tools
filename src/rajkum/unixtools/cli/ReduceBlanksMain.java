@@ -10,11 +10,12 @@ public class ReduceBlanksMain {
         FileOps file = new FileOps();
         ReduceBlanks rc = new ReduceBlanks();
         try {
-            String text = file.read(args[0]);
+            String fileName = args[0];
+            String text = file.read(fileName);
             text = rc.removeSpaces(text);
-
+            file.write(fileName,text);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Sorry something went wrong");
         }
     }
 
