@@ -7,14 +7,12 @@ import java.io.IOException;
 
 public class UniqMain {
     public static void main(String[] args) {
-        Uniq ob = new Uniq();
-        FileOps file = new FileOps();
         String text = null;
         try {
-            text = file.read(args[0]);
+            text = new FileOps().read(args[0]);
+            System.out.println(new Uniq().getUniqueLines(text));
         } catch (IOException e) {
             System.err.println("Something went wrong");
         }
-        System.out.println(ob.getUniqueLines(text));
     }
 }

@@ -7,13 +7,11 @@ import java.io.IOException;
 
 public class ReduceBlanksMain {
     public static void main(String[] args) {
-        FileOps file = new FileOps();
-        ReduceBlanks rc = new ReduceBlanks();
         try {
             String fileName = args[0];
-            String text = file.read(fileName);
-            text = rc.removeSpaces(text);
-            file.write(fileName,text);
+            String text = new FileOps().read(fileName);
+            text = new ReduceBlanks().removeSpaces(text);
+            new FileOps().write(fileName, text);
         } catch (IOException e) {
             System.err.println("Sorry something went wrong");
         }
