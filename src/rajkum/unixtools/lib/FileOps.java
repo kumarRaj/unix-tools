@@ -15,13 +15,15 @@ public class FileOps {
 
     public int write(String fileName, String content) throws IOException {
         File file = new File(fileName);
-        if (!file.exists()) {
-            file.createNewFile();
+        try {
+            if (!file.exists()) file.createNewFile();
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(content);
+            bw.close();
+            return 0;
+        } catch (Exception ex) {
+            return 1;
         }
-        FileWriter fw = new FileWriter(file.getAbsoluteFile());
-        BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(content);
-        bw.close();
-        return 0;
     }
 }

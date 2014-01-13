@@ -15,4 +15,15 @@ public class ReduceBlanksTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    public void testRemoveSpacesMultipleLines() throws Exception {
+        ReduceBlanks rc = new ReduceBlanks();
+        String input = "This line  has\n many   spaces in it.";
+        String expected = "This line has\n many spaces in it.";
+
+        String result = rc.removeSpaces(input);
+
+        assertEquals(expected, result);
+    }
 }

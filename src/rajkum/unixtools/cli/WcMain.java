@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class WcMain {
     public static void main(String[] args) {
-        String text = null;
+        String text;
         try {
             text = new FileOps().read(args[0]);
             WC ob = new WC();

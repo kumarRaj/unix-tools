@@ -19,7 +19,6 @@ public class Cut {
     }
 
     public String cutLines(String data, int field_no) {
-        Cut cut = new Cut();
-        return cut.cutLines(data, field_no, " ");
+        return cutLines(data, field_no, " ");
     }
 }
