@@ -12,7 +12,7 @@ public class WcMain {
             text = new FileOps().read(args[0]);
             WC ob = new WC();
             ob.Count(text);
-            System.out.println(ob.numOfChars + "\t" + ob.numOfWords + "\t" + ob.numOfLines + "\t" + args[0]);
+            System.out.println(ob.numOfLines + "\t" + ob.numOfWords + "\t" + ob.numOfChars + "\t" + args[0]);
         } catch (IOException e) {
             System.err.println("Something went wrong");
         }

@@ -4,41 +4,60 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+
 public class CutTest {
     @Test
-    public void testCutLines() throws Exception {
+    public void testCutLinesForGivenField() throws Exception {
         Cut ob = new Cut();
+        String text = "Abhi abhiu\nKabhi Kabhiu\nAditi Aditiu\n";
         String expected = "abhiu\nKabhiu\nAditiu\n";
-        String input = "Abhi abhiu\nKabhi Kabhiu\nAditi Aditiu\n";
+        int[] fields = {2};
 
-        String actual = ob.cutLines(input,2);
-
-        assertEquals(expected, actual);
-    }
-    @Test
-    public void testCutLinesWithDifferentInputs() throws Exception {
-        Cut ob = new Cut();
-        String expected = "Abhi\nKabhi\nAditi\n";
-        String input = "Abhi\tabhiu\nKabhi\tKabhiu\nAditi\tAditiu\n";
-        String actual = ob.cutLines(input,1,"\t");
+        String actual = ob.cutLines(text, fields, " ");
 
         assertEquals(expected, actual);
     }
     @Test
-    public void testCutLinesWithcomma() throws Exception {
+    public void testCutLinesForGivenFields() throws Exception {
         Cut ob = new Cut();
-        String input = "Abhi abhiu\nKabhi Kabhiu\nAditi Aditiu\n";
-        String expected = input;
+        String expected = "Abhi\tabhiu\nKabhi\tKabhiu\nAditi\tAditiu\n";
+        String text = "Abhi\tabhiu\nKabhi\tKabhiu\nAditi\tAditiu\n";
+        int[] fields = {1, 2};
 
-        String actual = ob.cutLines(input,2,",");
+        String actual = ob.cutLines(text, fields, "\t");
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testCutLinesForMultipleFields() throws Exception {
+        String text = "1 Ram pass \n" +
+                "2 Sita fail \n" +
+                "3 him her sad dad bad \n" +
+                "4 That This \n";
+        String expected = "1 Ram\n2 Sita\n3 him\n4 That\n";
+        String args[] = {"text", "-d ", "-f1,2"};
+        int[] fields = {1, 2};
+
+        String actual = new Cut().cutLines(text, fields, " ");
 
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testCutLinesForMultipleFieldsFieldNotPresent() throws Exception {
+        String text = "1 Ram pass \n" +
+                "2 Sita fail \n" +
+                "3 him her sad dad bad \n" +
+                "4 That This \n";
+        String expected = "\n" +
+                "\n" +
+                "sad dad\n" +
+                "\n";
+        int[] fields = {4, 5};
+        System.out.println("Rama Rama");
+
+        String actual = new Cut().cutLines(text, fields, " ");
+
+        assertEquals(expected, actual);
+    }
 }
-
-
-
-
-
-

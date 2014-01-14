@@ -1,4 +1,4 @@
-package rajkum.unixtools.cli;
+package rajkum.unixtools.lib;
 
 import org.junit.Test;
 
