@@ -10,14 +10,4 @@ public class Head {
         }
         return result.toString();
     }
-
-    public String getLines(String data) {
-        StringBuilder result = new StringBuilder("");
-        String[] lines;
-        lines = data.split("\n", 11);
-        for (int i = 0; i < 10 && i < lines.length; i++) {
-            result.append(lines[i]).append("\n");
-        }
-        return result.toString();
-    }
 }

@@ -1,0 +1,1 @@
+java -cp /d/projects/unix-tools/unix-tools.jar rajkum.unixtools.cli.HeadMain "${@}"

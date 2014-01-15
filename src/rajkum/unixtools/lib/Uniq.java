@@ -9,7 +9,6 @@ public class Uniq {
         for (int i = 0; i < lines.length - 1; i++) {
             if (!lines[i].equalsIgnoreCase(lines[i + 1]))
                 result.append(lines[i + 1]).append("\n");
-            else i++;
         }
         return result.toString();
     }

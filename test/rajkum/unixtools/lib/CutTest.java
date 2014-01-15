@@ -17,6 +17,7 @@ public class CutTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void testCutLinesForGivenFields() throws Exception {
         Cut ob = new Cut();
@@ -28,6 +29,7 @@ public class CutTest {
 
         assertEquals(expected, actual);
     }
+
     @Test
     public void testCutLinesForMultipleFields() throws Exception {
         String text = "1 Ram pass \n" +
@@ -54,7 +56,6 @@ public class CutTest {
                 "sad dad\n" +
                 "\n";
         int[] fields = {4, 5};
-        System.out.println("Rama Rama");
 
         String actual = new Cut().cutLines(text, fields, " ");
 

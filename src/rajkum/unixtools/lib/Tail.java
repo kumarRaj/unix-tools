@@ -5,19 +5,17 @@ public class Tail {
         StringBuilder result = new StringBuilder("");
         String[] lines;
         lines = data.split("\n");
-        for (int i = lines.length - 1; i > lines.length - numOfLines && i > 0; i--) {
+        int i;
+        if (numOfLines > lines.length)
+            i = 0;
+        else i = lines.length - numOfLines;
+        for (; i < lines.length; i++) {
             result.append(lines[i]).append("\n");
         }
         return result.toString();
     }
 
     public String getLines(String data) {
-        StringBuilder result = new StringBuilder("");
-        String[] lines;
-        lines = data.split("\n");
-        for (int i = lines.length - 1; i > lines.length - 11 && i > 0; i--) {
-            result.append(lines[i]).append("\n");
-        }
-        return result.toString();
+        return getLines(data, 10);
     }
 }

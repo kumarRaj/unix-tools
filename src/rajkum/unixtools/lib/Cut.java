@@ -1,6 +1,5 @@
 package rajkum.unixtools.lib;
 
-
 public class Cut {
 
     public String cutLines(String data, int[] fieldNumbers, String delimiter) {
