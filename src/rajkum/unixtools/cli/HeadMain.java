@@ -16,9 +16,9 @@ public class HeadMain {
             System.out.println(new Head().getLines(text, Integer.parseInt(input.get("n"))));
         } catch (NumberFormatException ex) {
             System.out.println(new Head().getLines(text, 10));
-        } catch (NullPointerException ex) {
-            ex.printStackTrace();
         } catch (IOException e) {
+            System.err.println("Either incorrect file or Error reading from file.");
+        } catch (Exception e) {
             System.err.println("Sorry,Something went wrong. Please try again");
         }
     }
