@@ -1,7 +1,7 @@
 .idea/*
-abc
+*.iml
 *.class
 text
 cutTest
 reduceBlanks
-out/*
+*.jar
