@@ -37,7 +37,6 @@ public class CutTest {
                 "3 him her sad dad bad \n" +
                 "4 That This \n";
         String expected = "1 Ram\n2 Sita\n3 him\n4 That\n";
-        String args[] = {"text", "-d ", "-f1,2"};
         int[] fields = {1, 2};
 
         String actual = new Cut().cutLines(text, fields, " ");
@@ -60,5 +59,18 @@ public class CutTest {
         String actual = new Cut().cutLines(text, fields, " ");
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testCutWithoutDelimiterInField() {
+        String text = "1 Ram pass \n" +
+                "2 Sita fail \n" +
+                "3 him her sad dad bad \n" +
+                "4 That This \n";
+        int[] fields = {4, 5};
+
+        String actual = new Cut().cutLines(text, fields, "\t");
+
+        assertEquals(text, actual);
     }
 }

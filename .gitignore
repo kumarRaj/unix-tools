@@ -1,6 +1,7 @@
 .idea/*
-*.iml
+abc
 *.class
 text
 cutTest
 reduceBlanks
+out/*
