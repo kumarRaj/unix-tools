@@ -7,10 +7,10 @@
         <mkdir dir="${build}/src"/>
     </target>
     <target name="compile-source" depends="init">
-    <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false"/>
+        <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false"/>
     </target>
     <target name="compile-tests" depends="compile-source">
-    <javac srcdir="${tst-dir}" destdir="${build}/test"
+        <javac srcdir="${tst-dir}" destdir="${build}/test"
                classpath="${tst-dir},${build}/src"/>
     </target>
     <target name="run-tests" depends="compile-tests">
@@ -27,8 +27,34 @@
             <arg value="rajkum.unixtools.lib.WCTest"/>
         </java>
     </target>
-    <target name="clear">
-        <delete dir="build"/>
+
+    <target name="createJar" depends="run-tests">
+        <mkdir dir="unix-tools_dist/lib"/>
+        <mkdir dir="unix-tools_dist/bin"/>
+        <jar destfile="unix-tools_dist/lib/unix-tools.jar" basedir="build/src"/>
     </target>
 
+    <target name="copyScripts" depends="createJar">
+        <copy file="Scripts/rkSort" todir="unix-tools_dist/bin"/>
+        <copy file="Scripts/rkHead" todir="unix-tools_dist/bin"/>
+        <copy file="Scripts/rkCut" todir="unix-tools_dist/bin"/>
+        <copy file="Scripts/rkReduceBlanks" todir="unix-tools_dist/bin"/>
+        <copy file="Scripts/rkTail" todir="unix-tools_dist/bin"/>
+        <copy file="Scripts/rkUniq" todir="unix-tools_dist/bin"/>
+        <copy file="Scripts/rkWc" todir="unix-tools_dist/bin"/>
+    </target>
+
+    <target name="copyReadme" depends="copyScripts">
+        <copy file="README.md" todir="unix-tools_dist"/>
+    </target>
+
+    <target name="dist" depends="copyReadme">
+        <zip zipfile="unix-tools.zip" basedir="unix-tools_dist"/>
+    </target>
+
+    <target name="clear">
+        <delete dir="build"/>
+        <delete dir="unix-tools_dist"/>
+        <delete file="unix-tools.zip"/>
+    </target>
 </project>
