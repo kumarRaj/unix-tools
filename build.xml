@@ -29,7 +29,7 @@
     <target name="copyReadme" depends="copyShells">
         <copy file="README.md" todir="unix-tools"></copy>
     </target>
-    <target name="createZip" depends="copyReadme">
+    <target name="dist" depends="copyReadme">
         <zip zipfile="unix-tools.zip" basedir="unix-tools"></zip>
     </target>
 
