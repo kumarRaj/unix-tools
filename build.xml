@@ -1,36 +1,21 @@
-<project name="unix-tools">
-    <target name="clean">
-        <delete dir="classes"></delete>
-        <delete dir="unix-tools"></delete>
-        <delete dir="unix-tools/lib"></delete>
-        <delete dir="unix-tools/bin"></delete>
+<project name="unix-tools" basedir=".">
+    <property name="tst-dir" location="test"/>
+    <property name="build" location="build"/>
+    <property name="src" location="src"/>
+    <target name="init">
+        <mkdir dir="${build}/test"/>
+        <mkdir dir="${build}/src"/>
     </target>
-    <target name="compile">
-        <mkdir dir="classes"></mkdir>
-        <javac srcdir="src" destdir="classes"></javac>
+    <target name="compile-source">
+        <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false"/>
     </target>
-    <target name="createDir" depends="compile">
-        <mkdir dir="unix-tools"></mkdir>
-        <mkdir dir="unix-tools/lib"></mkdir>
-        <mkdir dir="unix-tools/bin"></mkdir>
+    <target name="compile-tests">
+        <javac srcdir="${tst-dir}" destdir="${build}/test"
+               classpath="${tst-dir},${build}/src"/>
     </target>
-    <target name="createJar" depends="createDir">
-        <jar destfile="unix-tools/lib/unix-tools.jar" basedir="classes"></jar>
-    </target>
-    <target name="copyShells" depends="createJar">
-        <copy file="Scripts/rkSort" todir="unix-tools/bin"></copy>
-        <copy file="Scripts/rkHead" todir="unix-tools/bin"></copy>
-        <copy file="Scripts/rkCut" todir="unix-tools/bin"></copy>
-        <copy file="Scripts/rkReduceBlanks" todir="unix-tools/bin"></copy>
-        <copy file="Scripts/rkTail" todir="unix-tools/bin"></copy>
-        <copy file="Scripts/rkUniq" todir="unix-tools/bin"></copy>
-        <copy file="Scripts/rkWc" todir="unix-tools/bin"></copy>
-    </target>
-    <target name="copyReadme" depends="copyShells">
-        <copy file="README.md" todir="unix-tools"></copy>
-    </target>
-    <target name="dist" depends="copyReadme">
-        <zip zipfile="unix-tools.zip" basedir="unix-tools"></zip>
+    <target name="run-tests">
+        <java classname="org.junit.runner.JUnitCore"
+              classpath="${build}/test,${build}/src,lib/*.jar"/>
     </target>
 
 </project>

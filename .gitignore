@@ -1,7 +1,6 @@
 .idea/*
 *.iml
 *.class
-text
-cutTest
-reduceBlanks
+TestFiles
 *.jar
+out
