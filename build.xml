@@ -6,16 +6,29 @@
         <mkdir dir="${build}/test"/>
         <mkdir dir="${build}/src"/>
     </target>
-    <target name="compile-source">
-        <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false"/>
+    <target name="compile-source" depends="init">
+    <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false"/>
     </target>
-    <target name="compile-tests">
-        <javac srcdir="${tst-dir}" destdir="${build}/test"
+    <target name="compile-tests" depends="compile-source">
+    <javac srcdir="${tst-dir}" destdir="${build}/test"
                classpath="${tst-dir},${build}/src"/>
     </target>
-    <target name="run-tests">
+    <target name="run-tests" depends="compile-tests">
         <java classname="org.junit.runner.JUnitCore"
-              classpath="${build}/test,${build}/src,lib/*.jar"/>
+              classpath="lib/junit-4.10.jar;${build}/src;${build}/test">
+            <arg value="rajkum.unixtools.lib.CLIParserTest"/>
+            <arg value="rajkum.unixtools.lib.CutTest"/>
+            <arg value="rajkum.unixtools.lib.FileOpsTest"/>
+            <arg value="rajkum.unixtools.lib.HeadTest"/>
+            <arg value="rajkum.unixtools.lib.ReduceBlanksTest"/>
+            <arg value="rajkum.unixtools.lib.SortTest"/>
+            <arg value="rajkum.unixtools.lib.TailTest"/>
+            <arg value="rajkum.unixtools.lib.UniqTest"/>
+            <arg value="rajkum.unixtools.lib.WCTest"/>
+        </java>
+    </target>
+    <target name="clear">
+        <delete dir="build"/>
     </target>
 
 </project>
