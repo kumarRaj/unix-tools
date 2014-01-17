@@ -18,13 +18,13 @@
         <jar destfile="unix-tools/lib/unix-tools.jar" basedir="classes"></jar>
     </target>
     <target name="copyShells" depends="createJar">
-        <copy file="mtSort.sh" todir="unix-tools/bin"></copy>
-        <copy file="mtHead.sh" todir="unix-tools/bin"></copy>
-        <copy file="mtTail.sh" todir="unix-tools/bin"></copy>
-        <copy file="mtUniq.sh" todir="unix-tools/bin"></copy>
-        <copy file="mtWc.sh" todir="unix-tools/bin"></copy>
-        <copy file="mtCut.sh" todir="unix-tools/bin"></copy>
-        <copy file="mtReducer.sh" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkSort" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkHead" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkCut" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkReduceBlanks" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkTail" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkUniq" todir="unix-tools/bin"></copy>
+        <copy file="Scripts/rkWc" todir="unix-tools/bin"></copy>
     </target>
     <target name="copyReadme" depends="copyShells">
         <copy file="README.md" todir="unix-tools"></copy>
