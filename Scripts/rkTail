@@ -1,1 +1,1 @@
-java -cp /d/projects/unix-tools/unix-tools.jar rajkum.unixtools.cli.TailMain "${@}"
+java -cp ${UNIX_TOOLS}/lib/unix-tools.jar rajkum.unixtools.cli.TailMain "${@}"
