@@ -15,7 +15,7 @@
     </path>
     <target name="compile-tests" depends="compile-source">
         <javac srcdir="${tst-dir}" destdir="${build}/test" classpathref="junit"
-               classpath="${tst-dir},${build}/src"/>
+               classpath="${tst-dir};${build}/src"/>
     </target>
     <target name="run-tests" depends="compile-tests">
         <java classname="org.junit.runner.JUnitCore"
