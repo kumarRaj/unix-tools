@@ -10,8 +10,11 @@
     <target name="compile-source" depends="init">
         <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false"/>
     </target>
+    <path id="junit">
+        <fileset dir="lib" includes="*.jar"/>
+    </path>
     <target name="compile-tests" depends="compile-source">
-        <javac srcdir="${tst-dir}" destdir="${build}/test"
+        <javac srcdir="${tst-dir}" destdir="${build}/test" classpathref="junit"
                classpath="${tst-dir},${build}/src"/>
     </target>
     <target name="run-tests" depends="compile-tests">
@@ -54,4 +57,4 @@
         <delete dir="${dist_src}"/>
         <delete file="unix-tools.zip"/>
     </target>
-</project>  
+</project>
