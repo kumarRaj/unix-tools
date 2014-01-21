@@ -4,12 +4,19 @@ Unix Tools
 ##Well this is a simple basic version of Unix Tools created in Java.
 
     To run it is very simple.
-    You just have to download the scripts folder to your machine.
+    You just have to clone this repo.
+    Install ant.
+    _____
+    
+    Then go to the home directory on command line and run `ant dist`
+    You will get a zip file.
+    Extract it to a folder.
     _____
 
     Add this folder to an environment variable.
          Name : `UNIX_TOOLS`
-         Value : Path of your scripts folder.
+         Value : The folder where this is extracted.
+         In Path : `UNIX_TOOLS\bin`
     _____
 
     Thats all now you can run and test these commands.
