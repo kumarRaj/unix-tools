@@ -27,6 +27,7 @@
     </path>
     <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
     <!--Cobertura-->
+
     <target name="compile-source" depends="init">
         <javac srcdir="${src}" destdir="${build}/src" includeantruntime="false" debug="yes">
             <classpath refid="cobertura.classpath" />
@@ -39,7 +40,7 @@
         </javac>
     </target>
 
-    <target name="run_tests" depends="compile-tests">
+    <target name="run-tests" depends="compile-tests">
         <junit>
             <classpath>
                 <pathelement location="build/src" />
@@ -54,8 +55,9 @@
             <!--<formatter type = "brief" usefile = "false"/>-->
         </junit>
     </target>
+    <!--Cobertura-->
 
-    <target name="instrument" depends="run_tests">
+    <target name="instrument" depends="run-tests">
         <delete file="cobertura.ser"/>
         <delete dir="build/code-coverage/instrumented" />
 
@@ -66,7 +68,7 @@
         </cobertura-instrument>
     </target>
 
-    <target name="test-coverage" depends="run_tests">
+    <target name="test-coverage" depends="run-tests">
         <junit fork="yes" dir="." failureProperty="test.failed">
             <classpath>
                 <pathelement location="build/code-coverage/instrumented"/>
@@ -92,7 +94,6 @@
             <report format="frames" todir="build/code-coverage/reports/html" />
         </junitreport>
     </target>
-
     <target name="coverage-report">
         <cobertura-report srcdir="src" destdir="build/code-coverage/coverage/xml" format="xml" />
     </target>
@@ -112,8 +113,9 @@
     <target name="coverage"
             depends="instrument,test-coverage,coverage-report,summary-coverage-report,alternate-coverage-report"
             description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
+    <!--Cobertura-->
 
-    <target name="createJar" depends="run_tests">
+    <target name="createJar" depends="run-tests">
         <mkdir dir="${dist_src}/lib"/>
         <mkdir dir="${dist_src}/bin"/>
         <jar destfile="${dist_src}/lib/unix-tools.jar" basedir="build/src"/>
@@ -130,12 +132,15 @@
     </target>
 
     <target name="dist" depends="copyReadme">
-        <zip zipfile="unix-tools.zip" basedir="${dist_src}"/>
+
+        <zip zipfile="${dist_src}/unix-tools.zip" basedir="${dist_src}"/>
+        <delete dir="${dist_src}/bin"/>
+        <delete dir="${dist_src}/lib"/>
+        <delete file="${dist_src}/README.md"/>
     </target>
 
     <target name="clear">
+        <delete file="cobertura.ser"/>
         <delete dir="build"/>
-        <delete dir="${dist_src}"/>
-        <delete file="unix-tools.zip"/>
     </target>
 </project>
