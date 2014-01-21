@@ -1,6 +1,6 @@
 .idea/*
 *.iml
-*.class
 TestFiles
-*.jar
 out
+build
+Scripts
