@@ -7,7 +7,6 @@ public class Sort {
         StringBuilder result = new StringBuilder("");
         String lines[] = text.split("\n");
         Arrays.sort(lines);
-//        Collections.reverse(Arrays.asList(lines));
         for (String line : lines) {
             result.append(line).append("\n");
         }

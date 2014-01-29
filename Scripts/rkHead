@@ -1,1 +1,9 @@
-java -cp ${UNIX_TOOLS}/lib/unix-tools.jar rajkum.unixtools.cli.HeadMain "${@}"
+FILE=~/.head.config
+
+if [ -f $FILE ];
+then
+    java -cp ${UNIX_TOOLS}/lib/unix-tools.jar rajkum.unixtools.cli.HeadMain "${@}"
+else
+   echo "lines=5" > ~/.head.config
+   java -cp ${UNIX_TOOLS}/lib/unix-tools.jar rajkum.unixtools.cli.HeadMain "${@}"
+fi
